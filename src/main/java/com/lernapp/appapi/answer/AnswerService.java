@@ -1,26 +1,29 @@
-package com.lernapp.answer;
+package com.lernapp.appapi.answer;
 
-import com.github.dockerjava.api.exception.NotFoundException;
+import com.lernapp.appapi.answer.Answer;
+import com.lernapp.appapi.answer.AnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 @Service
 public class AnswerService {
+    @Autowired
     AnswerRepository answerRepository;
 
 
-    List<Answer> getAnswers() {
+    public List<Answer> getAnswers() {
         List<Answer> answers = new ArrayList<Answer>();
         answerRepository.findAll().forEach(answers1 -> answers.add(answers1));
         return answers;
     }
 
-    public void addNewAnswer(Answer answer) {
-
-        answerRepository.save(answer);
+    public Answer addNewAnswer(Answer answer) {
+        Answer entity;
+        entity = answerRepository.save(answer);
+        return entity;
 
     }
 

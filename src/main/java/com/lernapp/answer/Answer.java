@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table
 public class Answer {
     public int getId() {
         return id;
@@ -30,6 +31,7 @@ public class Answer {
     @Column(name = "hashedStudentId")
     private final String hashedStudentId;
     @Column(name = "answerDate")
+    {{current_timestamp}}
     private final Date answerDate;
 
     public Answer(int id, String studentAnswer, String hashedStudentId, Date answerDate) {
